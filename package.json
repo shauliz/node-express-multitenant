@@ -1,0 +1,8 @@
+{
+  "name": "node-multi-tenancy",
+  "version": "1.0.0",
+  "description": "Multi tenancy package for complete node.js web applications (express based)",
+  "main": "app.js",
+  "author": "Shaul Zuarets",
+  "license": "MIT"
+}
