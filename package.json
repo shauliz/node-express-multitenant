@@ -1,8 +1,19 @@
 {
-  "name": "node-multi-tenancy",
+  "name": "node-express-multitenant",
   "version": "1.0.0",
   "description": "Multi tenancy package for complete node.js web applications (express based)",
   "main": "app.js",
   "author": "Shaul Zuarets",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "yarn test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shauliz/node-express--multitenant.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shauliz/node-express--multitenant/issues"
+  },
+  "homepage": "https://github.com/shauliz/node-express--multitenant#readme"
 }
