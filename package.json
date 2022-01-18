@@ -1,6 +1,6 @@
 {
   "name": "node-express-multitenant",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Multi tenancy package for complete node.js web applications (express based)",
   "main": "app.js",
   "author": "Shaul Zuarets",
