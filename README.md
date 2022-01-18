@@ -3,7 +3,7 @@
 ## TL;DR
 
 This package automatically adds or edit the `where` clause in any CRUD operation with the proper tenant id.
-This version only works with [Express](https://expressjs.com/) and [Prism orm](https://www.prisma.io/)
+This version only works with [Express](https://expressjs.com/) and [Prisma orm](https://www.prisma.io/)
 
 ---
 
@@ -51,4 +51,47 @@ When using this package middleware you can provide your own method of extracting
 
 ---
 
-Once we have the tenant id, we need to store it in a way each request will have its own tenant id and we don't need to be afraid async operation will interfere with each other. For this we are utilizing Async Local storage. You don't need to anything here, just for you to know it.
+Once we have the tenant id, we need to store it in a way each request will have its own tenant id and we don't need to be afraid async operation will interfere with each other. For this we are utilizing Async Local storage. You don't need to anything here, just FYI section.
+
+## Validating database operations
+
+---
+
+Now we need to make sure all database operation has a where clause and the proper tenant id, we are doing it by adding a Prisma middleware which validate all operations has the proper tenant id.
+This middleware assumes your tenant id column called `account_id`, however, you can override it. It only validates multitenancy if the table has the tenant id column in the requested model.
+
+There is a way to override the multitenancy validation on specific queries by adding the `ignoreMultitenancy` flag to the Prisma query. In future versions any use of this flag will be logged.
+
+In future versions we will also support blocks ignore in which we will ignore the validation for multiple queries.
+
+# Quick start
+
+1. Add the express middleware:
+
+```
+const { getMultitenancyMiddleware } = require('node-express-multitenant');
+
+var app = express();
+
+app.use(getMultitenancyMiddleware());
+```
+
+This middleware also accept a function that returns the account id, that function accept the request as a parameter. If not provided the default extractor will be used. Here is an example of the extractor function:
+
+```
+function defaultAccountIdExtractor(req) {
+  return req.headers['account-id'];
+}
+```
+
+2. Add the Prisma middleware:
+
+```
+prisma = new PrismaClient();
+
+prisma.$use((params, next) => {
+    return addMultitenancy(params, next, prisma, 'account_id');
+});
+```
+
+The last parameter is the tables tenant id column name, if not provided, `account_id` will be used.
