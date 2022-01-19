@@ -1,4 +1,4 @@
-const getContextManager = require('./contextManager');
+const getContextManager = require('./context-manager');
 
 const contextManager = getContextManager();
 
