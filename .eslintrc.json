@@ -1,0 +1,194 @@
+{
+  "env": {
+    "node": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:json/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-await-in-loop": "error",
+    "no-console": "error",
+    "no-extra-parens": ["error", "all", { "nestedBinaryExpressions": false }],
+    "no-promise-executor-return": "error",
+    "no-template-curly-in-string": "error",
+    "no-unreachable-loop": "error",
+    "require-atomic-updates": "error",
+    "accessor-pairs": "error",
+    "arrow-body-style": [
+      "error",
+      "as-needed",
+      { "requireReturnForObjectLiteral": true }
+    ],
+    "array-callback-return": ["error", { "checkForEach": true }],
+    "consistent-return": "error",
+    "curly": "error",
+    "default-case-last": "error",
+    "default-param-last": ["error"],
+    "dot-notation": "error",
+    "eqeqeq": "error",
+    "grouped-accessor-pairs": ["error", "getBeforeSet"],
+    "guard-for-in": "error",
+    "max-classes-per-file": "error",
+    "no-alert": "error",
+    "no-constructor-return": "error",
+    "no-empty-function": "error",
+    "no-eq-null": "error",
+    "no-eval": "error",
+    "no-extend-native": "error",
+    "no-extra-bind": "error",
+    "no-extra-label": "error",
+    "no-floating-decimal": "error",
+    "no-implicit-globals": "error",
+    "no-implied-eval": "error",
+    "no-iterator": "error",
+    "no-lone-blocks": "error",
+    "no-loop-func": "error",
+    "no-multi-str": "error",
+    "no-new": "error",
+    "no-new-func": "error",
+    "no-new-wrappers": "error",
+    "no-octal-escape": "error",
+    "no-restricted-globals": [
+      "error",
+      {
+        "name": "isNaN",
+        "message": "Use Number.isNaN instead. Remember to check for typeof number if needed"
+      }
+    ],
+    "no-proto": "error",
+    "no-return-assign": ["error", "always"],
+    "no-return-await": "error",
+    "no-script-url": "error",
+    "no-self-compare": "error",
+    "no-sequences": "error",
+    "no-throw-literal": "error",
+    "no-useless-call": "error",
+    "no-useless-concat": "error",
+    "no-useless-return": "error",
+    "no-void": "error",
+    "no-warning-comments": "error",
+    "prefer-promise-reject-errors": "error",
+    "prefer-regex-literals": "error",
+    "require-await": "error",
+    "require-unicode-regexp": "error",
+    "wrap-iife": ["error", "inside"],
+    "yoda": ["error", "never"],
+    "no-label-var": "error",
+    "no-shadow": "error",
+    "no-undef-init": "error",
+    "camelcase": "error",
+    "consistent-this": ["error", "that"],
+    "func-name-matching": "error",
+    "id-denylist": [
+      "error",
+      "el",
+      "cb",
+      "callback",
+      "str",
+      "num",
+      "arr",
+      "obj",
+      "arg",
+      "param",
+      "params",
+      "err"
+    ],
+    "id-length": ["error", { "min": 2 }],
+    "lines-between-class-members": [
+      "error",
+      "always",
+      { "exceptAfterSingleLine": true }
+    ],
+    "max-depth": ["error", 4],
+    "max-lines": ["error", { "max": 500, "skipBlankLines": true }],
+    "max-nested-callbacks": ["error", 3],
+    "max-params": ["error", 3],
+    "new-parens": "error",
+    "no-array-constructor": "error",
+    "no-bitwise": "error",
+    "no-lonely-if": "error",
+    "no-multi-assign": "error",
+    "no-multiple-empty-lines": ["error", { "max": 2 }],
+    "no-negated-condition": "error",
+    "no-nested-ternary": "error",
+    "no-new-object": "error",
+    "no-underscore-dangle": "error",
+    "no-unneeded-ternary": "error",
+    "one-var": ["error", "never"],
+    "operator-assignment": "error",
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": "*", "next": "return" },
+      { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*" },
+      { "blankLine": "always", "prev": "*", "next": "block-like" },
+      { "blankLine": "always", "prev": "block-like", "next": "*" },
+      {
+        "blankLine": "any",
+        "prev": ["const", "let", "var"],
+        "next": ["const", "let", "var"]
+      },
+      { "blankLine": "always", "prev": "directive", "next": "*" },
+      { "blankLine": "any", "prev": "directive", "next": "directive" },
+      { "blankLine": "never", "prev": ["case", "default"], "next": "*" },
+      { "blankLine": "always", "prev": "import", "next": "*" },
+      { "blankLine": "any", "prev": "import", "next": "import" }
+    ],
+    "prefer-exponentiation-operator": "error",
+    "prefer-object-spread": "error",
+    "quotes": ["error", "double", { "allowTemplateLiterals": true }],
+    "spaced-comment": [
+      "error",
+      "always",
+      {
+        "block": {
+          "balanced": true
+        }
+      }
+    ],
+    "generator-star-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true,
+        "method": "before"
+      }
+    ],
+    "no-duplicate-imports": "error",
+    "no-useless-computed-key": "error",
+    "no-useless-constructor": "error",
+    "no-useless-rename": "error",
+    "no-var": "error",
+    "object-shorthand": "error",
+    "prefer-arrow-callback": "error",
+    "prefer-const": "error",
+    "prefer-rest-params": "error",
+    "prefer-spread": "error",
+    "prefer-template": "error",
+    "sort-imports": [
+      "error",
+      { "ignoreCase": true, "ignoreDeclarationSort": true }
+    ],
+    "symbol-description": "error"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.spec.{js,ts}"],
+      "plugins": ["jest"],
+      "env": {
+        "jest": true
+      },
+      "extends": ["plugin:jest/all"],
+      "rules": {
+        "jest/no-hooks": "off",
+        "jest/prefer-expect-assertions": "off"
+      }
+    }
+  ]
+}
