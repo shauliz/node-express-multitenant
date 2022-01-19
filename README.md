@@ -1,4 +1,4 @@
-(This is the first draft, it is not production ready version yet, feel free to contact me at: shaul.zuarets@gmail.com)
+> This is a first draft, and is not production ready version yet. Please feel free to contact me at shaul.zuarets@gmail.com
 
 # Node multi tenancy package
 
@@ -11,9 +11,9 @@ This version only works with [Express](https://expressjs.com/) and [Prisma orm](
 
 ## Background
 
-There multiple ways of achieving multi tenancy, starting from DB per tenant, scheme per tenant and one db for all tenants. All of the share the idea of having one instance (or a cluster) of the application to serve multiple tenants (also known as accounts or clients).
+There are multiple ways of achieving multi tenancy, starting from DB per tenant, scheme per tenant and one db for all tenants. All the share the idea of having one instance (or a cluster) of the application to serve multiple tenants (also known as accounts or clients).
 
-This package provide support for one DB for all tenants approach.
+This package provides support for one DB for all tenants approach.
 The idea behind this is very simple, all tables (actually most) holds an extra column which contains the tenant id. Every database access (CRUD operation), we need to specify the tenant which we want to address. For example if we want to read all the posts the following query will retrieve all accounts bank account transactions:
 
 `SELECT * FROM Transactions`
@@ -22,8 +22,8 @@ The proper query is:
 
 `SELECT * FROM Transactions WHERE account_id = 7`
 
-Our problem begins with humans, it turns out humans tends to do mistakes, and in our case a mistake can be fatal.
-Think of a case where a developer forget to add the where clause, this means, one client will be able to view all of the other clients bank account transactions. It is almost as your database has been hacked.
+Our problem begins with humans. it turns out humans tend to do mistakes, and in our case a mistake can be fatal.
+Think of a case where a developer forget to add the where clause, this means, one client will be able to view all the other clients bank account transactions. It is almost as your database has been hacked.
 Therefore, we can't trust developers as it turns out they are human after all and mistakes happen.
 
 This package will take responsibility out of the developer hands and will automatically add or edit the `where` clause with the proper tenant id.
@@ -36,7 +36,7 @@ The developers experience will be seamless, as from their perspective this app h
 
 The first thing we need to do on any incoming request is to extract the tenant id from the request.
 
-There are a lot of ways of doing that and each has it's own pros and cons. The critical thing about it, is that from security point of view, this is a critical point. If you choose a way that one might be able to manipulate he will be able to obtain data of any other client.
+There are a lot of ways of doing that and each has its own pros and cons. The critical thing about it, is that from security point of view, this is a critical point. If you choose a way that one might be able to manipulate he will be able to obtain data of any other client.
 
 Another critical point is that we need to retrieve it on any incoming message, therefor we are using an Express middleware to do that.
 Here are some examples:
@@ -53,7 +53,7 @@ When using this package middleware you can provide your own method of extracting
 
 ---
 
-Once we have the tenant id, we need to store it in a way each request will have its own tenant id and we don't need to be afraid async operation will interfere with each other. For this we are utilizing Async Local storage. You don't need to anything here, just FYI section.
+Once we have the tenant id, we need to store it in a way each request will have its own tenant id, and we don't need to worry that async operations will interfere with each other. For that we are utilizing Async Local Storage. You don't need to anything here, just an FYI section.
 
 ## Validating database operations
 
@@ -71,14 +71,14 @@ In future versions we will also support blocks ignore in which we will ignore th
 1. Add the express middleware:
 
 ```
-const { getMultitenancyMiddleware } = require('node-express-multitenant');
+import { getMultitenancyMiddleware } from 'node-express-multitenant';
 
-var app = express();
+const app = express();
 
 app.use(getMultitenancyMiddleware());
 ```
 
-This middleware also accept a function that returns the account id, that function accept the request as a parameter. If not provided the default extractor will be used. Here is an example of the extractor function:
+This middleware also accepts a function that returns the account id. That function accepts the request as a parameter. If it is not provided, the default extractor will be used. Here is an example of the extractor function:
 
 ```
 function defaultAccountIdExtractor(req) {
