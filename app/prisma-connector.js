@@ -14,32 +14,36 @@ const createActions = ["create", "createMany", "upsert"];
 const WHERE_CLAUSE = "where";
 
 function addMultitenancy(
-  params,
+  parameters,
   next,
   prisma,
   accountIdColumnName = "account_id",
 ) {
-  if (shouldValidateMultitenancy(params, accountIdColumnName, prisma)) {
-    if (validationActions.includes(params.action)) {
-      addQueryMultitenancy(params, accountIdColumnName);
-    } else if (createActions.includes(params.action)) {
-      addCreateMultitenancy(params, accountIdColumnName);
+  if (shouldValidateMultitenancy(parameters, accountIdColumnName, prisma)) {
+    if (validationActions.includes(parameters.action)) {
+      addQueryMultitenancy(parameters, accountIdColumnName);
+    } else if (createActions.includes(parameters.action)) {
+      addCreateMultitenancy(parameters, accountIdColumnName);
     }
   }
-  return next(params);
+
+  return next(parameters);
 }
 
-function shouldValidateMultitenancy(params, columnName, prisma) {
-  if (params.args?.ignoreMultitenancy) {
-    delete params.args.ignoreMultitenancy;
+function shouldValidateMultitenancy(parameters, columnName, prisma) {
+  if (parameters.args?.ignoreMultitenancy) {
+    delete parameters.args.ignoreMultitenancy;
+
     return false;
   }
-  return isColumnExists(params, columnName, prisma);
+
+  return isColumnExists(parameters, columnName, prisma);
 }
 
-function isColumnExists(params, columnName, prisma) {
-  const modelName = params.model;
+function isColumnExists(parameters, columnName, prisma) {
+  const modelName = parameters.model;
   const models = prisma._dmmf.datamodel.models;
+
   for (let i = 0; i < models.length; i++) {
     if (models[i].name === modelName) {
       for (let g = 0; g < models[i].fields.length; g++) {
@@ -53,32 +57,36 @@ function isColumnExists(params, columnName, prisma) {
   return false;
 }
 
-function addCreateMultitenancy(params, accountIdColumnName) {
-  if (!params.args) {
-    params.args = {};
+function addCreateMultitenancy(parameters, accountIdColumnName) {
+  if (!parameters.args) {
+    parameters.args = {};
   }
-  if (!params.args.data) {
-    params.args.data = {};
+
+  if (!parameters.args.data) {
+    parameters.args.data = {};
   }
-  params.args.data[accountIdColumnName] = getAccountId();
+
+  parameters.args.data[accountIdColumnName] = getAccountId();
 }
 
-function addQueryMultitenancy(params, accountIdColumnName) {
-  var query = {};
+function addQueryMultitenancy(parameters, accountIdColumnName) {
+  let query = {};
 
-  if (!params.args) {
-    params.args = {};
+  if (!parameters.args) {
+    parameters.args = {};
   }
-  if (params.args.where) {
-    query = params.args[WHERE_CLAUSE];
+
+  if (parameters.args.where) {
+    query = parameters.args[WHERE_CLAUSE];
   }
 
   query[accountIdColumnName] = getAccountId();
-  params.args[WHERE_CLAUSE] = query;
+  parameters.args[WHERE_CLAUSE] = query;
 }
 
 function getAccountId() {
   const store = contextManager.getStore();
+
   return store.accountId ? parseInt(store.accountId) : -1;
 }
 
