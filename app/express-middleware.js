@@ -1,4 +1,4 @@
-const getContextManager = require('./context-manager');
+const getContextManager = require("./context-manager");
 
 const contextManager = getContextManager();
 
@@ -15,7 +15,7 @@ function getMultitenancyMiddleware(accountIdExtractor) {
 }
 
 function defaultAccountIdExtractor(req) {
-  return req.headers['account-id'];
+  return req.headers["account-id"];
 }
 
 module.exports = getMultitenancyMiddleware;

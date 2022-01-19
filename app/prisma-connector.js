@@ -1,23 +1,23 @@
-const getContextManager = require('./context-manager');
+const getContextManager = require("./context-manager");
 
 const contextManager = getContextManager();
 const validationActions = [
-  'findFirst',
-  'findMany',
-  'findFirst',
-  'update',
-  'updateMany',
-  'delete',
-  'deleteMany',
+  "findFirst",
+  "findMany",
+  "findFirst",
+  "update",
+  "updateMany",
+  "delete",
+  "deleteMany",
 ];
-const createActions = ['create', 'createMany', 'upsert'];
-const WHERE_CLAUSE = 'where';
+const createActions = ["create", "createMany", "upsert"];
+const WHERE_CLAUSE = "where";
 
 function addMultitenancy(
   params,
   next,
   prisma,
-  accountIdColumnName = 'account_id'
+  accountIdColumnName = "account_id",
 ) {
   if (shouldValidateMultitenancy(params, accountIdColumnName, prisma)) {
     if (validationActions.includes(params.action)) {
