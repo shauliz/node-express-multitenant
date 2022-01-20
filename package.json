@@ -1,12 +1,13 @@
 {
+  "type": "module",
   "name": "node-express-multitenant",
   "version": "1.0.3",
-  "description": "Multi tenancy package for complete node.js web applications (express based)",
+  "description": "One database for all tenants multi tenancy package",
   "main": "app/app.js",
   "author": "Shaul Zuarets",
   "license": "MIT",
   "scripts": {
-    "test": "npm test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/shauliz/node-express--multitenant#readme",
   "devDependencies": {
+    "@prisma/client": "^3.8.1",
     "eslint": "~7.32.0",
     "eslint-config-prettier": "~8.3.0",
     "eslint-config-standard": "~16.0.3",
@@ -26,6 +28,9 @@
     "eslint-plugin-node": "~11.1.0",
     "eslint-plugin-prettier": "~4.0.0",
     "eslint-plugin-promise": "~5.2.0",
-    "prettier": "~2.5.1"
+    "jest": "^27.4.7",
+    "jest-mock-extended": "^2.0.4",
+    "prettier": "~2.5.1",
+    "@types/jest": "^27.4.0"
   }
 }
