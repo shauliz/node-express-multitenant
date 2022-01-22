@@ -31,10 +31,11 @@ function addMultitenancy(
 }
 
 function shouldValidateMultitenancy(parameters, columnName, prisma) {
-  if (parameters.args?.ignoreMultitenancy) {
+  if (parameters.args.ignoreMultitenancy) {
+    const status = parameters.args.ignoreMultitenancy;
     delete parameters.args.ignoreMultitenancy;
 
-    return false;
+    return status;
   }
 
   return isColumnExists(parameters, columnName, prisma);
