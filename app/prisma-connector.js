@@ -36,7 +36,7 @@ function shouldValidateMultitenancy(parameters, columnName, prisma) {
     delete params.args.ignoreMultitenancy;
 
     if (status) {
-      return status;
+      return false;
     }
   }
   return isColumnExists(params, columnName, prisma);
