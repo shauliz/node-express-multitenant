@@ -1,4 +1,4 @@
-import { getContextManager } from "../../src";
+import { getContextManager } from "../../app/context-manager";
 import { prismaMock } from "./singleton.spec";
 
 const contextManager = getContextManager();
