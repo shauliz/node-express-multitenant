@@ -1,4 +1,4 @@
-import { getContextManager } from "./context-manager";
+import { getContextManager } from "app/context-manager";
 
 const contextManager = getContextManager();
 

@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { addMultitenancy } from "../../app/prisma-connector";
+import { addMultitenancy } from "app/prisma-connector";
 
 const prismaClient = new PrismaClient();
 prismaClient.$use((params, next) => {

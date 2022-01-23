@@ -1,4 +1,5 @@
 import { dirname, resolve } from "path";
+import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin";
 import { fileURLToPath } from "url";
 
 export default {
@@ -9,13 +10,14 @@ export default {
       {
         test: /\.ts$/u,
         use: "ts-loader",
-        include: [resolve(dirname(fileURLToPath(import.meta.url)), "app/src")],
+        include: [resolve(dirname(fileURLToPath(import.meta.url)), "src/app")],
         exclude: /node_modules/u,
       },
     ],
   },
   resolve: {
     extensions: [".ts", ".js"],
+    plugins: [new TsconfigPathsPlugin()],
   },
   watchOptions: {
     ignored: /node_modules/u,
