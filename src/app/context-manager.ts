@@ -1,13 +1,11 @@
-const { AsyncLocalStorage } = require("async_hooks");
+import { AsyncLocalStorage } from "async_hooks";
 
 let asyncLocalStorage;
 
-function getContextManager() {
+export function getContextManager() {
   if (!asyncLocalStorage) {
     asyncLocalStorage = new AsyncLocalStorage();
   }
 
   return asyncLocalStorage;
 }
-
-module.exports = getContextManager;

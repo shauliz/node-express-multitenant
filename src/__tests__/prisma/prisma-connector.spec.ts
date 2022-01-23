@@ -1,5 +1,5 @@
-import { prismaMock } from "./singleton";
-import getContextManager from "../../app/context-manager"
+import { getContextManager } from "app/context-manager";
+import { prismaMock } from "./singleton.spec";
 
 const contextManager = getContextManager();
 
@@ -15,10 +15,10 @@ test("should read the proper user", async () => {
 
   const retrievedUser = prismaMock.user.findMany({
     where: {
-      id:1
-    }
-  })
-  const data = {accountId: 1}
+      id: 1,
+    },
+  });
+  const data = { accountId: 1 };
   contextManager.run(data, async () => {
     await expect(retrievedUser).resolves.toEqual({
       id: 1,
@@ -26,7 +26,6 @@ test("should read the proper user", async () => {
       email: "hello@prisma.io",
     });
   });
-  
 });
 
 test("should not read user", async () => {
@@ -40,11 +39,9 @@ test("should not read user", async () => {
   prismaMock.user.create.mockResolvedValue(user);
 
   const retrievedUser = prismaMock.user.findMany({
-    where: {
-      id:1
-    }
-  })
-  const data = {accountId: 2}
+    where: { id: 1 },
+  });
+  const data = { accountId: 2 };
   contextManager.run(data, async () => {
     await expect(retrievedUser).resolves.toEqual({
       id: 1,
@@ -52,7 +49,6 @@ test("should not read user", async () => {
       email: "hello@prisma.io",
     });
   });
-  
 });
 
 test("should read multiple users", async () => {
@@ -67,7 +63,7 @@ test("should read multiple users", async () => {
 
   const retrievedUser = prismaMock.user.findMany();
 
-  const data = {accountId: 1}
+  const data = { accountId: 1 };
   contextManager.run(data, async () => {
     await expect(retrievedUser).resolves.toEqual({
       id: 1,
@@ -89,7 +85,7 @@ test("should not read multiple users", async () => {
 
   const retrievedUser = prismaMock.user.findMany();
 
-  const data = {accountId: 2}
+  const data = { accountId: 2 };
   contextManager.run(data, async () => {
     await expect(retrievedUser).resolves.toEqual({
       id: 1,

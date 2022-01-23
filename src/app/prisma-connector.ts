@@ -1,4 +1,4 @@
-const getContextManager = require("./context-manager");
+import { getContextManager } from "app/context-manager";
 
 const contextManager = getContextManager();
 const validationActions = [
@@ -13,7 +13,7 @@ const validationActions = [
 const createActions = ["create", "createMany", "upsert"];
 const WHERE_CLAUSE = "where";
 
-function addMultitenancy(
+export function addMultitenancy(
   parameters,
   next,
   prisma,
@@ -31,18 +31,18 @@ function addMultitenancy(
 }
 
 function shouldValidateMultitenancy(parameters, columnName, prisma) {
-  if (params.args?.ignoreMultitenancy !== undefined) {
-    const status = params.args.ignoreMultitenancy;
-    delete params.args.ignoreMultitenancy;
+  if (parameters.args?.ignoreMultitenancy !== undefined) {
+    const status = parameters.args.ignoreMultitenancy;
+    delete parameters.args.ignoreMultitenancy;
 
     if (status) {
       return false;
     }
   }
-  return isColumnExists(params, columnName, prisma);
+  return isColumnExists(parameters, columnName, prisma);
 }
 
-function isColumnExists(parameters, columnName, prisma) {
+export function isColumnExists(parameters, columnName, prisma) {
   const modelName = parameters.model;
   const models = prisma._dmmf.datamodel.models;
 
@@ -91,5 +91,3 @@ function getAccountId() {
 
   return store.accountId ? parseInt(store.accountId) : -1;
 }
-
-module.exports = { addMultitenancy, isColumnExists };
