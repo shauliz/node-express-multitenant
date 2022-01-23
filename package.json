@@ -1,14 +1,17 @@
 {
-  "type": "module",
   "name": "node-express-multitenant",
   "version": "1.0.3",
   "description": "One database for all tenants multi tenancy package",
-  "main": "app/app.js",
+  "type": "module",
   "author": "Shaul Zuarets",
   "license": "MIT",
   "scripts": {
+    "watch": "npm run build:dev -- --watch",
+    "build:dev": "webpack --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "test": "jest"
   },
+  "main": "src/index.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shauliz/node-express--multitenant.git"
@@ -18,7 +21,9 @@
   },
   "homepage": "https://github.com/shauliz/node-express--multitenant#readme",
   "devDependencies": {
-    "@prisma/client": "^3.8.1",
+    "@prisma/client": "~3.8.1",
+    "@types/jest": "~27.4.0",
+    "@types/node": "~16.11.21",
     "eslint": "~7.32.0",
     "eslint-config-prettier": "~8.3.0",
     "eslint-config-standard": "~16.0.3",
@@ -31,6 +36,16 @@
     "jest": "^27.4.7",
     "jest-mock-extended": "^2.0.4",
     "prettier": "~2.5.1",
-    "@types/jest": "^27.4.0"
+    "ts-loader": "~9.2.6",
+    "typescript": "~4.5.4",
+    "webpack": "~5.67.0",
+    "webpack-cli": "~4.9.1",
+    "webpack-merge": "~5.8.0"
+  },
+  "peerDependencies": {
+    "@prisma/client": "^3.0.0"
+  },
+  "engines": {
+    "node": ">= 16.4"
   }
 }
