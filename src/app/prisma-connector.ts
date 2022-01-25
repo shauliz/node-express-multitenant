@@ -83,6 +83,7 @@ function addQueryMultitenancy(parameters, accountIdColumnName) {
   }
 
   query[accountIdColumnName] = getAccountId();
+
   parameters.args[WHERE_CLAUSE] = query;
 }
 
