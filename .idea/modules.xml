@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/node-express--multitenant.iml" filepath="$PROJECT_DIR$/.idea/node-express--multitenant.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/node-express-multitenant.iml" filepath="$PROJECT_DIR$/.idea/node-express-multitenant.iml" />
     </modules>
   </component>
 </project>

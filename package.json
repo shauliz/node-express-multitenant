@@ -14,12 +14,12 @@
   "main": "dist/main.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shauliz/node-express--multitenant.git"
+    "url": "git+https://github.com/shauliz/node-express-multitenant.git"
   },
   "bugs": {
-    "url": "https://github.com/shauliz/node-express--multitenant/issues"
+    "url": "https://github.com/shauliz/node-express-multitenant/issues"
   },
-  "homepage": "https://github.com/shauliz/node-express--multitenant#readme",
+  "homepage": "https://github.com/shauliz/node-express-multitenant#readme",
   "devDependencies": {
     "@prisma/client": "~3.8.1",
     "@types/jest": "~27.4.0",
