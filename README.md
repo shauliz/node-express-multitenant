@@ -50,8 +50,6 @@ When using this package middleware you can provide your own method of extracting
 
 ## Storing the tenant id
 
-## test
-
 Once we have the tenant id, we need to store it in a way each request will have its own tenant id, and we don't need to worry that async operations will interfere with each other. For that we are utilizing Async Local Storage. You don't need to do anything here, just an FYI section.
 
 ## Validating database operations
