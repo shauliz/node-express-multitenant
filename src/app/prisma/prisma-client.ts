@@ -7,9 +7,9 @@ export default function getDb() {
   if (!prisma) {
     prisma = new PrismaClient();
 
-    prisma.$use((params, next) => {
-      return addMultitenancy(params, next, prisma, "account_id");
-    });
+    prisma.$use((parameters, next) =>
+      addMultitenancy(parameters, next, prisma, "account_id"),
+    );
   }
 
   return prisma;

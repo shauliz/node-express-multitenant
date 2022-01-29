@@ -13,6 +13,7 @@ const validationActions = [
 const createActions = ["create", "createMany", "upsert"];
 const WHERE_CLAUSE = "where";
 
+// eslint-disable-next-line max-params
 export function addMultitenancy(
   parameters,
   next,
@@ -33,23 +34,30 @@ export function addMultitenancy(
 function shouldValidateMultitenancy(parameters, columnName, prisma) {
   if (parameters.args?.ignoreMultitenancy !== undefined) {
     const status = parameters.args.ignoreMultitenancy;
+
     delete parameters.args.ignoreMultitenancy;
 
     if (status) {
       return false;
     }
   }
+
   return isColumnExists(parameters, columnName, prisma);
 }
 
 export function isColumnExists(parameters, columnName, prisma) {
   const modelName = parameters.model;
+  // eslint-disable-next-line no-underscore-dangle
   const models = prisma._dmmf.datamodel.models;
 
-  for (let i = 0; i < models.length; i++) {
-    if (models[i].name === modelName) {
-      for (let g = 0; g < models[i].fields.length; g++) {
-        if (models[i].fields[g].name === columnName) {
+  for (let modelIndex = 0; modelIndex < models.length; modelIndex++) {
+    if (models[modelIndex].name === modelName) {
+      for (
+        let fieldIndex = 0;
+        fieldIndex < models[modelIndex].fields.length;
+        fieldIndex++
+      ) {
+        if (models[modelIndex].fields[fieldIndex].name === columnName) {
           return true;
         }
       }
