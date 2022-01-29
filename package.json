@@ -9,7 +9,8 @@
     "watch": "npm run build:dev -- --watch",
     "build:dev": "webpack --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "prisma generate"
   },
   "main": "dist/main.ts",
   "repository": {
@@ -20,6 +21,9 @@
     "url": "https://github.com/shauliz/node-express-multitenant/issues"
   },
   "homepage": "https://github.com/shauliz/node-express-multitenant#readme",
+  "prisma": {
+    "schema": "./src/app/prisma/schema.prisma"
+  },
   "devDependencies": {
     "@prisma/client": "~3.8.1",
     "@types/jest": "~27.4.0",
@@ -36,6 +40,7 @@
     "jest": "~27.4.7",
     "jest-mock-extended": "~2.0.4",
     "prettier": "~2.5.1",
+    "prisma": "~3.8.1",
     "ts-jest": "~27.1.3",
     "ts-loader": "~9.2.6",
     "tsconfig-paths-webpack-plugin": "~3.5.2",
@@ -45,7 +50,8 @@
     "webpack-merge": "~5.8.0"
   },
   "peerDependencies": {
-    "@prisma/client": "^3.0.0"
+    "@prisma/client": "^3.0.0",
+    "prisma": "^3.0.0"
   },
   "engines": {
     "node": ">= 16.4"
