@@ -3,16 +3,16 @@ import getDb from "app/prisma/prisma-client";
 
 /* eslint-disable camelcase */
 
-const contextManager = getContextManager();
-const prisma = getDb();
-
-function initializeDatabase() {
-  return prisma.user.deleteMany({
-    ignoreMultitenancy: true,
-  });
-}
-
 describe("read", () => {
+  const contextManager = getContextManager();
+  const prisma = getDb();
+
+  function initializeDatabase() {
+    return prisma.user.deleteMany({
+      ignoreMultitenancy: true,
+    });
+  }
+
   beforeEach(async () => {
     await initializeDatabase();
   });
