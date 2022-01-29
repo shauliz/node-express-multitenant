@@ -4,8 +4,13 @@ import getDb from "app/prisma/prisma-client";
 /* eslint-disable camelcase */
 
 describe("read", () => {
-  const contextManager = getContextManager();
-  const prisma = getDb();
+  let contextManager;
+  let prisma;
+
+  beforeAll(() => {
+    contextManager = getContextManager();
+    prisma = getDb();
+  });
 
   function initializeDatabase() {
     return prisma.user.deleteMany({
