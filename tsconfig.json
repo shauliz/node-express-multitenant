@@ -14,7 +14,8 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "src",
     "paths": {
-      "app/*": ["app/*"]
+      "app/*": ["app/*"],
+      "prisma/*": ["prisma/*"]
     }
   },
   "include": ["src/**/*"],
