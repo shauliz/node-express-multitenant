@@ -7,8 +7,8 @@ export function getMultitenancyMiddleware(accountIdExtractor) {
     accountIdExtractor = defaultAccountIdExtractor;
   }
 
-  return (request, result, next) => {
-    const data = { accountId: accountIdExtractor(request) };
+  return (req, res, next) => {
+    const data = { accountId: accountIdExtractor(req) };
 
     contextManager.run(data, () => {
       next();
