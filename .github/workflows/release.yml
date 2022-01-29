@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [16.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -31,4 +31,4 @@ jobs:
         run: npm run lint
 
       - name: Build
-        run: npm build
+        run: npm run build
