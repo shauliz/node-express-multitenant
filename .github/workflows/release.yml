@@ -28,7 +28,7 @@ jobs:
         run: npm ci
 
       - name: Lint
-        run: npm irun lint
+        run: npm run lint
 
       - name: Build
         run: npm build
