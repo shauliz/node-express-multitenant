@@ -6,10 +6,11 @@
   "author": "Shaul Zuarets",
   "license": "MIT",
   "scripts": {
+    "lint": "eslint . --ext .js,.ts",
+    "test": "jest",
     "watch": "npm run build:dev -- --watch",
     "build:dev": "webpack --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "test": "jest",
     "postinstall": "prisma generate"
   },
   "main": "dist/main.ts",
@@ -28,6 +29,8 @@
     "@prisma/client": "~3.8.1",
     "@types/jest": "~27.4.0",
     "@types/node": "~16.11.21",
+    "@typescript-eslint/eslint-plugin": "~5.10.1",
+    "@typescript-eslint/parser": "~5.10.1",
     "eslint": "~7.32.0",
     "eslint-config-prettier": "~8.3.0",
     "eslint-config-standard": "~16.0.3",
