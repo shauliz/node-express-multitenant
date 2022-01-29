@@ -12,7 +12,7 @@ function initializeDatabase() {
   });
 }
 
-describe("my beverage", () => {
+describe("read", () => {
   beforeEach(async () => {
     await initializeDatabase();
   });
