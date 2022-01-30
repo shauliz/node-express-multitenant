@@ -1,0 +1,43 @@
+name: NodeJS with Webpack
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Instal dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Create tests db
+        run: npm run createdb
+
+      - name: Test
+        run: |
+          (echo "===== Running tests Attempt: 1 ====" && npm run test) || \
+          (echo "===== Running tests Attempt: 2 ====" && npm run test) || \
+          (echo "===== Running tests Attempt: 3 ====" && npm run test) || \
+          (echo "==== Tests Step Failed ====" && exit 1)
+
+      - name: Build
+        run: npm run build
