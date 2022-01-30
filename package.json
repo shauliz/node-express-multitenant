@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/shauliz/node-express-multitenant#readme",
   "prisma": {
-    "schema": "./src/prisma/schema.prisma"
+    "schema": "./src/app/prisma/schema.prisma"
   },
   "dependencies": {
     "@prisma/client": "^3.0.0"

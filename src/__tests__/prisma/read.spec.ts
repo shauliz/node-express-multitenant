@@ -1,5 +1,5 @@
 import { getContextManager } from "app/context-manager";
-import getDb from "prisma/prisma-client";
+import getDb from "app/prisma/prisma-client";
 
 /* eslint-disable camelcase */
 
