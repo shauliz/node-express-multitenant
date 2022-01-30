@@ -11,7 +11,8 @@
     "watch": "npm run build:dev -- --watch",
     "build:dev": "webpack --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "prepare": "husky install"
   },
   "main": "dist/main.ts",
   "repository": {
@@ -29,6 +30,8 @@
     "@prisma/client": "^3.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "~16.0.0",
+    "@commitlint/config-conventional": "~16.0.0",
     "@types/jest": "~27.4.0",
     "@types/node": "~16.11.21",
     "@typescript-eslint/eslint-plugin": "~5.10.1",
@@ -42,6 +45,7 @@
     "eslint-plugin-node": "~11.1.0",
     "eslint-plugin-prettier": "~4.0.0",
     "eslint-plugin-promise": "~5.2.0",
+    "husky": "^7.0.4",
     "jest": "~27.4.7",
     "jest-mock-extended": "~2.0.4",
     "prettier": "~2.5.1",
