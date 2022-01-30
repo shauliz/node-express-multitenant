@@ -7,12 +7,13 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint . --ext .js,.ts",
-    "test": "npx prisma migrate dev && jest",
+    "test": "jest",
     "watch": "npm run build:dev -- --watch",
     "build:dev": "webpack --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "postinstall": "prisma generate",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "createdb": "npx prisma migrate dev"
   },
   "main": "dist/main.ts",
   "repository": {
