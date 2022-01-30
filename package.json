@@ -13,7 +13,7 @@
     "build": "webpack --config webpack.prod.js",
     "postinstall": "prisma generate",
     "prepare": "husky install",
-    "createdb": "npx prisma migrate dev"
+    "createdb": "prisma migrate dev"
   },
   "main": "dist/main.ts",
   "repository": {
@@ -46,7 +46,7 @@
     "eslint-plugin-node": "~11.1.0",
     "eslint-plugin-prettier": "~4.0.0",
     "eslint-plugin-promise": "~5.2.0",
-    "husky": "^7.0.4",
+    "husky": "~7.0.0",
     "jest": "~27.4.7",
     "jest-mock-extended": "~2.0.4",
     "prettier": "~2.5.1",

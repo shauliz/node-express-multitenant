@@ -30,7 +30,7 @@ jobs:
         run: npm run lint
 
       - name: Create tests db
-        run: npx prisma migrate dev
+        run: npm run createdb
 
       - name: Test
         run: |
