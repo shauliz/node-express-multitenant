@@ -93,8 +93,10 @@ prisma.$use((params, next) => {
     return addMultitenancy(params, next, prisma, 'account_id');
 });
 ```
+The last parameter is the tables tenant id column name, if not provided, `account_id` will be used.
 
-Sending a query without multitenancy validation require ading the `ignoreMultitenancy flag`:
+
+Sending a query without multitenancy validation require adding the `ignoreMultitenancy flag`:
 ```
 const user = await prisma.user.findMany({
   where: {
@@ -103,5 +105,3 @@ const user = await prisma.user.findMany({
   ignoreMultitenancy: true
 });
 ```
-
-The last parameter is the tables tenant id column name, if not provided, `account_id` will be used.
