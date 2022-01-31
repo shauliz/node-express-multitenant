@@ -28,6 +28,7 @@ Therefore, we can't trust developers as it turns out they are human after all an
 This package will take responsibility out of the developer's hands and will automatically add or edit the `where` clause with the proper tenant id.
 
 The developers experience will be seamless, as from their perspective this app has only one client.
+A developer can explicitly override the multi-tenancy validation using the package's override option
 
 ## Getting the tenant id
 
@@ -92,5 +93,15 @@ prisma.$use((params, next) => {
     return addMultitenancy(params, next, prisma, 'account_id');
 });
 ```
-
 The last parameter is the tables tenant id column name, if not provided, `account_id` will be used.
+
+
+Sending a query without multitenancy validation requires adding the `ignoreMultitenancy flag`:
+```
+const user = await prisma.user.findMany({
+  where: {
+    // some conditions
+  },
+  ignoreMultitenancy: true
+});
+```
