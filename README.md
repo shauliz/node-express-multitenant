@@ -68,8 +68,8 @@ In future versions we will also support blocks ignore in which we will ignore th
 
 1. Add the express middleware:
 
-```
-import { getMultitenancyMiddleware } from 'node-express-multitenant';
+```ts
+import getMultitenancyMiddleware from "node-express-multitenant";
 
 const app = express();
 
@@ -78,30 +78,31 @@ app.use(getMultitenancyMiddleware());
 
 This middleware also accepts a function that returns the account id. That function accepts the request as a parameter. If it is not provided, the default extractor will be used. Here is an example of the extractor function:
 
-```
+```ts
 function defaultAccountIdExtractor(req) {
-  return req.headers['account-id'];
+  return req.headers["account-id"];
 }
 ```
 
 2. Add the Prisma middleware:
 
-```
-prisma = new PrismaClient();
+```ts
+const prisma = new PrismaClient();
 
 prisma.$use((params, next) => {
-    return addMultitenancy(params, next, prisma, 'account_id');
+  return addMultitenancy(params, next, prisma, "account_id");
 });
 ```
+
 The last parameter is the tables tenant id column name, if not provided, `account_id` will be used.
 
-
 Sending a query without multitenancy validation requires adding the `ignoreMultitenancy flag`:
-```
+
+```ts
 const user = await prisma.user.findMany({
   where: {
     // some conditions
   },
-  ignoreMultitenancy: true
+  ignoreMultitenancy: true,
 });
 ```

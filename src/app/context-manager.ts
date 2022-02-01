@@ -1,11 +1,9 @@
 import { AsyncLocalStorage } from "async_hooks";
 
-let asyncLocalStorage;
+let contextManager: AsyncLocalStorage<any>;
 
-export function getContextManager() {
-  if (!asyncLocalStorage) {
-    asyncLocalStorage = new AsyncLocalStorage();
-  }
-
-  return asyncLocalStorage;
+if (!contextManager) {
+  contextManager = new AsyncLocalStorage();
 }
+
+export default contextManager;
