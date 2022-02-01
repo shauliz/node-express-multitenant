@@ -1,0 +1,19 @@
+src/
+.github/
+webpack*
+jest.config*
+.husky
+node_modules
+tsconfig*
+
+# linters
+.commitlintrc*
+.eslintrc*
+.prettierignore*
+.prettierrc*
+.editorconfig
+
+# editor settings
+.idea
+.vscode
+.editorconfig
