@@ -1,6 +1,5 @@
-import { getContextManager } from "app/context-manager";
+import contextManager from "app/context-manager";
 
-const contextManager = getContextManager();
 const validationActions = [
   "findFirst",
   "findMany",
@@ -42,29 +41,25 @@ function shouldValidateMultitenancy(parameters, columnName, prisma) {
     }
   }
 
-  return isColumnExists(parameters, columnName, prisma);
+  return isTenantFieldExists(parameters, columnName, prisma);
 }
 
-export function isColumnExists(parameters, columnName, prisma) {
+export function isTenantFieldExists(parameters, fieldName, prisma) {
   const modelName = parameters.model;
   // eslint-disable-next-line no-underscore-dangle
   const models = prisma._dmmf.datamodel.models;
 
-  for (let modelIndex = 0; modelIndex < models.length; modelIndex++) {
-    if (models[modelIndex].name === modelName) {
-      for (
-        let fieldIndex = 0;
-        fieldIndex < models[modelIndex].fields.length;
-        fieldIndex++
-      ) {
-        if (models[modelIndex].fields[fieldIndex].name === columnName) {
-          return true;
-        }
-      }
-    }
+  const matchedModel = models.find((model) => model.name === modelName);
+
+  if (!matchedModel) {
+    return false;
   }
 
-  return false;
+  const matchedField = matchedModel.fields.find(
+    (field) => field.name === fieldName,
+  );
+
+  return !!matchedField;
 }
 
 function addCreateMultitenancy(parameters, accountIdColumnName) {

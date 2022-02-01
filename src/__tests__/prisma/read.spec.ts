@@ -1,4 +1,4 @@
-import { getContextManager } from "app/context-manager";
+import contextManager from "app/context-manager";
 import getDb from "app/prisma/prisma-client";
 
 /* eslint-disable camelcase */
@@ -10,7 +10,6 @@ describe("read", () => {
     });
   }
 
-  const contextManager = getContextManager();
   const prisma = getDb();
 
   beforeEach(async () => {
@@ -31,7 +30,7 @@ describe("read", () => {
     const data = { accountId: 1 };
 
     await prisma.user.create({ data: user, ignoreMultitenancy: true });
-    contextManager.run(data, async () => {
+    await contextManager.run(data, async () => {
       const retrievedUser = await prisma.user.findMany({
         where: {
           id: 2,
@@ -52,7 +51,7 @@ describe("read", () => {
     const data = { accountId: 1 };
 
     await prisma.user.create({ data: user, ignoreMultitenancy: true });
-    contextManager.run(data, async () => {
+    await contextManager.run(data, async () => {
       const retrievedUser = await prisma.user.findMany({
         where: {
           id: 2,
@@ -74,7 +73,7 @@ describe("read", () => {
     const data = { accountId: 2 };
 
     await prisma.user.create({ data: user, ignoreMultitenancy: true });
-    contextManager.run(data, async () => {
+    await contextManager.run(data, async () => {
       const retrievedUser = await prisma.user.findMany({
         where: {
           id: 1,
@@ -95,7 +94,7 @@ describe("read", () => {
     const data = { accountId: 2 };
 
     await prisma.user.create({ data: user, ignoreMultitenancy: true });
-    contextManager.run(data, async () => {
+    await contextManager.run(data, async () => {
       const retrievedUser = await prisma.user.findMany({
         where: {
           id: 1,
@@ -117,7 +116,7 @@ describe("read", () => {
     const data = { accountId: 2 };
 
     await prisma.user.create({ data: user, ignoreMultitenancy: true });
-    contextManager.run(data, async () => {
+    await contextManager.run(data, async () => {
       const retrievedUser = await prisma.user.findMany({
         where: {
           id: 1,
@@ -139,7 +138,7 @@ describe("read", () => {
     const data = { accountId: 1 };
 
     await prisma.user.create({ data: user, ignoreMultitenancy: true });
-    contextManager.run(data, async () => {
+    await contextManager.run(data, async () => {
       const retrievedUser = await prisma.user.findMany({
         where: {
           OR: [
@@ -165,7 +164,7 @@ describe("read", () => {
     const data = { accountId: 2 };
 
     await prisma.user.create({ data: user, ignoreMultitenancy: true });
-    contextManager.run(data, async () => {
+    await contextManager.run(data, async () => {
       const retrievedUser = await prisma.user.findMany({
         where: {
           OR: [
