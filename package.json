@@ -15,7 +15,8 @@
     "createdb": "prisma migrate dev",
     "prepublishOnly": "npm run build"
   },
-  "main": "dist/main.bundle.js",
+  "main": "./dist/main.bundle.js",
+  "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shauliz/node-express-multitenant.git"
