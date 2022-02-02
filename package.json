@@ -1,6 +1,6 @@
 {
   "name": "node-express-multitenant",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Shared database strategy multi tenancy package",
   "type": "module",
   "author": "Shaul Zuarets",
@@ -13,9 +13,10 @@
     "build": "webpack --config webpack.prod.js",
     "postinstall": "prisma generate",
     "prepare": "husky install",
-    "createdb": "prisma migrate dev"
+    "createdb": "prisma migrate dev",
+    "prepublishOnly": "npm run build"
   },
-  "main": "dist/main.ts",
+  "main": "dist/main.bundle.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shauliz/node-express-multitenant.git"
