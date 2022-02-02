@@ -1,6 +1,6 @@
 {
   "name": "node-express-multitenant",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Shared database strategy multi tenancy package",
   "type": "module",
   "author": "Shaul Zuarets",
@@ -15,7 +15,8 @@
     "createdb": "prisma migrate dev",
     "prepublishOnly": "npm run build"
   },
-  "main": "dist/main.bundle.js",
+  "main": "./dist/main.bundle.js",
+  "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shauliz/node-express-multitenant.git"
