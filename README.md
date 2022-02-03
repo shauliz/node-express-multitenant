@@ -107,3 +107,7 @@ const user = await prisma.user.findMany({
   ignoreMultitenancy: true,
 });
 ```
+
+Feel free to contact me:
+[Twitter](https://twitter.com/Shaul_Zuarets)
+[Linkedin](https://www.linkedin.com/in/shaul-zuarets-1a789918/)
