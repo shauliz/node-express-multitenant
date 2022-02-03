@@ -5,6 +5,7 @@
 This package adds the ability of multi-tenancy in a shared database strategy.
 This package supports the full cycle of the request from extracting the tenant id, storing it and using it in any CRUD operation to the database.
 This version only works with [Express](https://expressjs.com/) and [Prisma orm](https://www.prisma.io/).
+The package automatically adds or edits the `where` clause with the proper tenant ID on each database access.
 
 ---
 
