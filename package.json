@@ -1,8 +1,7 @@
 {
   "name": "node-express-multitenant",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Shared database strategy multi tenancy package",
-  "type": "module",
   "author": "Shaul Zuarets",
   "license": "MIT",
   "scripts": {
