@@ -1,8 +1,7 @@
-import { dirname, resolve } from "path";
-import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin";
-import { fileURLToPath } from "url";
+const path = require("path");
+const { TsconfigPathsPlugin } = require("tsconfig-paths-webpack-plugin");
 
-export default {
+module.exports = {
   entry: "./src/index.ts",
   target: "node16",
   module: {
@@ -10,7 +9,7 @@ export default {
       {
         test: /\.ts$/u,
         use: "ts-loader",
-        include: [resolve(dirname(fileURLToPath(import.meta.url)), "src/app")],
+        include: path.resolve(__dirname, "src/app"),
         exclude: /node_modules/u,
       },
     ],
@@ -29,8 +28,8 @@ export default {
   },
   output: {
     filename: "[name].bundle.js",
-    libraryTarget: "commonjs",
-    path: resolve(dirname(fileURLToPath(import.meta.url)), "dist"),
+    library: { type: "commonjs" },
+    path: path.resolve(__dirname, "dist"),
     clean: true,
   },
 };
