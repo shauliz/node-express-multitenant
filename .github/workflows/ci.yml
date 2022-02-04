@@ -1,4 +1,4 @@
-name: NodeJS with Webpack
+name: CI
 
 on:
   push:
@@ -23,13 +23,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Instal dependencies
+      - name: Install dependencies
         run: npm ci
 
       - name: Lint
         run: npm run lint
 
-      - name: Create tests db
+      - name: Create tests DB
         run: npm run createdb
 
       - name: Test
@@ -41,3 +41,20 @@ jobs:
 
       - name: Build
         run: npm run build
+
+  changelog:
+    needs: [build]
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+
+      - name: Conventional Changelog Action
+        uses: TriPSs/conventional-changelog-action@v3
