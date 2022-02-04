@@ -1,10 +1,21 @@
 {
   "name": "node-express-multitenant",
-  "version": "1.2.7",
+  "version": "1.3.0",
   "description": "Shared database strategy multi tenancy package",
   "author": "Shaul Zuarets",
   "license": "MIT",
-  "keywords": ["multi-tenancy", "express", "prisma", "shared database", "multitenant", "multi-tenant", "multitenancy", "multi", "tenant", "SaaS"],
+  "keywords": [
+    "multi-tenancy",
+    "express",
+    "prisma",
+    "shared database",
+    "multitenant",
+    "multi-tenant",
+    "multitenancy",
+    "multi",
+    "tenant",
+    "SaaS"
+  ],
   "scripts": {
     "lint": "eslint . --ext .js,.ts",
     "test": "jest",
