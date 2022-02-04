@@ -60,6 +60,7 @@ Once we have the tenant id, we need to store it in a way each request will have 
 
 Now we need to make sure all database operations have a where clause and the proper tenant id, we are doing it by adding a Prisma middleware which validates that all operations have the proper tenant id.
 This middleware assumes your tenant id column called `account_id`, however, you can override it. It only validates multi-tenancy if the table has the tenant id column in the requested model.
+If the table does not have the tenant id column in it, we will skip the multitenancy validation.
 
 There is a way to override the multitenancy validation on specific queries by adding the `ignoreMultitenancy` flag to the Prisma query. In future versions any use of this flag will be logged.
 
@@ -108,6 +109,6 @@ const user = await prisma.user.findMany({
 });
 ```
 
-Feel free to contact me:
-[Twitter](https://twitter.com/Shaul_Zuarets)
+Feel free to contact me: <br>
+[Twitter](https://twitter.com/Shaul_Zuarets) <br>
 [Linkedin](https://www.linkedin.com/in/shaul-zuarets-1a789918/)
