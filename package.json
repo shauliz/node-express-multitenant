@@ -1,6 +1,6 @@
 {
   "name": "node-express-multitenant",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Shared database strategy multi tenancy package",
   "author": "Shaul Zuarets (https://www.linkedin.com/in/shaul-zuarets-1a789918/)",
   "contributors": [
