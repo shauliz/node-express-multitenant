@@ -1,24 +1,23 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "lib": ["es2021"],
-    "module": "esnext",
-    "target": "ES2020",
+    "lib": ["ES2022"],
+    "module": "ESNext",
+    "target": "ES2022",
     "sourceMap": true,
-    "allowJs": true,
     "declaration": true,
     "declarationDir": "./dist",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
     "baseUrl": "src",
     "paths": {
       "app/*": ["app/*"]
     }
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "src/__tests__"]
+  "exclude": ["node_modules", "dist", "src/__tests__", "examples"]
 }

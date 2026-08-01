@@ -1,9 +1,7 @@
-import { AsyncLocalStorage } from "async_hooks";
+import { AsyncLocalStorage } from "node:async_hooks";
 
-let contextManager: AsyncLocalStorage<any>;
+import type { TenantContext } from "app/types";
 
-if (!contextManager) {
-  contextManager = new AsyncLocalStorage();
-}
+const contextManager = new AsyncLocalStorage<TenantContext>();
 
 export default contextManager;

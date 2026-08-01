@@ -1,15 +1,23 @@
 import { PrismaClient } from "@prisma/client";
-import { addMultitenancy } from "app/prisma-connector";
 
-let prisma;
+import { withMultitenancy } from "app/prisma-connector";
 
-export default function getDb() {
+type ExtendedPrismaClient = ReturnType<typeof createPrismaClient>;
+
+let prisma: ExtendedPrismaClient | undefined;
+
+function createPrismaClient() {
+  return new PrismaClient().$extends(
+    withMultitenancy({ tenantField: "account_id" }),
+  );
+}
+
+/**
+ * Internal Prisma client used by the test suite only. Not part of the public API.
+ */
+export default function getDb(): ExtendedPrismaClient {
   if (!prisma) {
-    prisma = new PrismaClient();
-
-    prisma.$use((parameters, next) =>
-      addMultitenancy(parameters, next, prisma, "account_id"),
-    );
+    prisma = createPrismaClient();
   }
 
   return prisma;

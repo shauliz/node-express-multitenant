@@ -1,14 +1,21 @@
 src/
 .github/
-webpack*
+examples/
+coverage/
+*.config.js
+*.config.ts
+tsup.config.ts
 jest.config*
 .husky
-node_modules
 tsconfig*
+AGENTS.md
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+SECURITY.md
 
 # linters
 .commitlintrc*
-.eslintrc*
+eslint.config*
 .prettierignore*
 .prettierrc*
 .editorconfig
@@ -16,4 +23,3 @@ tsconfig*
 # editor settings
 .idea
 .vscode
-.editorconfig
